@@ -1,4 +1,5 @@
 const baseUrl = "https://localhost:6969/api/users";
+const baseUrl3 = "https://localhost:6969/api/timesheet";
 
 function deleteFunction(id) {
   const deleteUserApiUrl = baseUrl + "/" + id;
@@ -10,6 +11,36 @@ function deleteFunction(id) {
     },
   }).then((response) => {
     //populateList();
+  });
+}
+
+function submitLog2() {
+  const postTimeSheetApiUrl2 = baseUrl3;
+
+  var id = JSON.parse(sessionStorage.user);
+
+  console.log(id);
+
+  const sendLog = {
+    StartTime: document.getElementById("start-time").value,
+    EndTime: document.getElementById("end-time").value,
+    Description: document.getElementById("description").value,
+    Lunch: "true",
+    UserID: id,
+  };
+  console.log(sendLog);
+
+  fetch(postTimeSheetApiUrl2, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendLog),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
   });
 }
 

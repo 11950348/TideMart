@@ -11,6 +11,11 @@
     padding-top: 20px;
     padding-left: 50px;
 }
+
+#map {
+  height: 400px;
+  width: 100%;
+}
   
 .nav-link:active,
   .nav-link:focus,

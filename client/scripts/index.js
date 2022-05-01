@@ -36,7 +36,12 @@ function onSignIn() {
 
           //console.log(user);
           //console.log(myUser);
-          window.location.replace("../client/employee.html");
+          if (user.admin == "true") {
+            window.location.replace("../client/admin.html");
+          }
+          else {
+            window.location.replace("../client/employee.html");
+          }
         }
       });
 
