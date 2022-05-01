@@ -20,18 +20,18 @@ const baseUrl2 = "https://localhost:6969/api/timesheet";
 //   $( '#checkBox' ).prop( "checked", false )
 // }
 
-$("#main").toggleClass(localStorage.toggled);
+// $("#main").toggleClass(localStorage.toggled);
 
-function darkLight() {
-  /*DARK CLASS*/
-  if (localStorage.toggled != "dark") {
-    $("#main, p").toggleClass("dark", true);
-    localStorage.toggled = "dark";
-  } else {
-    $("#main, p").toggleClass("dark", false);
-    localStorage.toggled = "";
-  }
-}
+// function darkLight() {
+//   /*DARK CLASS*/
+//   if (localStorage.toggled != "dark") {
+//     $("#main, p").toggleClass("dark", true);
+//     localStorage.toggled = "dark";
+//   } else {
+//     $("#main, p").toggleClass("dark", false);
+//     localStorage.toggled = "";
+//   }
+// }
 
 // function getUser() {
 
@@ -82,36 +82,83 @@ function submitLog() {
   });
 }
 
-// function butthole() {
-//   var id = JSON.parse(sessionStorage.user);
+function butthole() {
+  var id = JSON.parse(sessionStorage.user);
 
-//   console.log(id);
-// }
-
-/*Add 'checked' property to input if background == dark*/
-if ($("main").hasClass("dark")) {
-  $("#checkBox").prop("checked", true);
-} else {
-  $("#checkBox").prop("checked", false);
+  console.log(id);
 }
 
 
-var buttonstate=0;
+// Clock In and Out button LOCAL Storage
+$('#ClockInAndOut').toggleClass(localStorage.toggled);
+//var buttonstate=0;
 function ClockInOut(element)
 {
-  buttonstate= 1 - buttonstate;
+  //buttonstate= 1 - buttonstate;
   var blabel, bcolor;
-  if(buttonstate)
+  if(localStorage.toggled != 'In')
   {
+    //If they are clocked in it is green
     blabel="Clocked In";
     bcolor="green";
+    $('#ClockInAndOut').toggleClass('In', true);
+    localStorage.toggled = "In";
   }
   else
   {
+    //If they are clocked out it is red
     blabel="Clocked Out";
     bcolor="red";
+    $('#ClockInAndOut').toggleClass('In', false);
+    localStorage.toggled = "";
   }
   var child=element.firstChild;
   child.style.color=bcolor;
   child.innerHTML=blabel;
+}
+
+// // Dark Mode LOCAL Storage
+// $('#main').toggleClass(localStorage.toggled);
+
+// function darkLight() {
+//   /*DARK CLASS*/
+//   if (localStorage.toggled != 'dark') {
+//     $('#main, p').toggleClass('dark', true);
+//     localStorage.toggled = "dark";
+     
+//   } else {
+//     $('#main, p').toggleClass('dark', false);
+//     localStorage.toggled = "";
+//   }
+// }
+
+// /*Add 'checked' property to input if background == dark*/
+// if ($('main').hasClass('dark')) {
+//    $( '#checkBox' ).prop( "checked", true )
+// } else {
+//   $( '#checkBox' ).prop( "checked", false )
+// }
+
+
+
+// Dark Mode SESSION Storage
+$('#body').toggleClass(sessionStorage.toggled);
+
+function darkLight() {
+  /*DARK CLASS*/
+  if (sessionStorage.toggled != 'dark') {
+    $('#body, p').toggleClass('dark', true);
+    sessionStorage.toggled = "dark";
+     
+  } else {
+    $('#body, p').toggleClass('dark', false);
+    sessionStorage.toggled = "";
+  }
+}
+
+/*Add 'checked' property to input if background == dark*/
+if ($('#body').hasClass('dark')) {
+   $( '#checkBox' ).prop( "checked", true )
+} else {
+  $( '#checkBox' ).prop( "checked", false )
 }
