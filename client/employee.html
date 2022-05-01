@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/> -->
+
     <!-- Favicon -->
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" sizes="16x16"/>
     <!-- Favicon -->
@@ -14,7 +16,7 @@
     <!-- Bootstrap CDN -->
 
     <!-- CSS -->
-    <link href="./styles/employee.css" rel="stylesheet" />
+    <link href="./styles/admin.css" rel="stylesheet" />
     <!-- CSS -->
 
     <!-- Bootstrap Icons CDN -->
@@ -25,160 +27,157 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- Bootstrap CDN-->
 
-    <!-- Bootstrap Java Script CDN-->
+    <!-- Data tables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.css"/>
+    <!-- Data tables -->
+
+    <!-- Java Script CDN-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- Bootstrap Java Script CDN-->
+    <!-- Java Script CDN-->
 
     <!-- Clock script -->
     <script src="./scripts/clock.js"></script>
     <!-- Clock script -->
 
-    <!-- SideBar script -->
-    <script src="./scripts/employee.js"></script>
-    <!-- SideBar script -->
 
-    <title>Tide Market: Employee Panel</title>
+    <title>Tide Market: Admin Panel</title>
   </head>
-  <body id="main" onload="getUser()">
-    <section id="wrapper">
-      <nav class="navbar navbar-expand-md">
-        <div class="container-fluid mx-2">
-          <!-- User Info -->
-          <div class="navbar-header">
-            <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
-            <p class="text-white">Caleb Ray</p>
-          </div>
-          <!-- User Info -->
-          <!-- Settings Drop Down -->
-          <div class="collapse navbar-collapse" id="toggle-navbar">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Settings
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li style="align-items: center;">
-                    <a class="dropdown-item">Dark Mode</a>
-                    <label class="switch">
-                      <input type="checkbox" onclick="darkLight()" id="checkBox" >
-                      <span class="slider"></span>
-                    </label>
-                  </li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Log out</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Settings Drop Down -->
-      
-      <!-- Employee Stats -->
-        <section class="statis mt-4 text-center">
-          <div class="row">
+
+  <body>
+    
+    <!-- Start Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+        
+            <div id="userPhoto">
+                <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
+                <p class="text-white">Caleb Ray</p>
+            </div>
+
+        <!-- <a href="#" class="nav-link h3 text-white my-2">Side Nav</a> -->
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">Home</span>
+        </li>
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">About</span>
+        </li>
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">Contact</span>
+        </li>
+        </ul>
+    </div>
+    <!-- End Side-Nav -->
+    
+    <!-- Start Employee Status View -->
+    <section class="statis mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>154 Hours</h3>
                 <p class="lead">Time On Task</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>245 Hours</h3>
                 <p class="lead">Downtime</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>7</h3>
                 <p class="lead">Days Late</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>2</h3>
                 <p class="lead">Vacation Days Left</p>
-              </div>
             </div>
-          </div>
-        </section>
-        <!-- Employee Stats -->
-
-        <!-- Clock In and Out -->
-        <section class="mt-4" id="page">
-          <div class="row">
-            <div class="col-lg-12">
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
-                <div style="text-align: center;">
-                  <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#LogTimeButton">Clock In/Out</button>
-                </div>
-                <br>
             </div>
-          </section>
-        <!-- Clock In and Out -->
-
-        <!-- Employee Time Form -->
-        <section class="mt-4" id="page">
-          <div class="row">
-            <div class="col-lg-12">
-              <!-- <div id="clock"></div> -->
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
-              <div id="clock"></div>
-                <form style="padding-left: 100px; padding-right: 100px;">
-                  
-                <div class="form-outline form-white mb-4">
-                  <label for="start-time">Start Time</label>
-                  <input class="yuh" size="1" type="datetime-local" min="07:00" max="18:00" width="10%" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="start-time" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input class="yuh" size="1" type="datetime-local" min="07:00" max="18:00" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="end-time" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input class="yuh" type="text" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="description" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <!-- <input class="yuh" type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" /> -->
-                  <label for="pet-select">Choose a task:</label>
-
-                  <select id="pet-select">
-                      <option value="">--Please choose an option--</option>
-                      <option value="dog">Task 1</option>
-                      <option value="cat">Task 2</option>
-                      <option value="hamster">Task 3</option>
-                      <option value="parrot">Task 4</option>
-                      <option value="spider">Task 5</option>
-                      <option value="goldfish">Task 6</option>
-                  </select>
-
-                </div>
-                <div style="text-align: center;">
-                  <button  id="button" type="submit" class="btn text-white fw-bold" onclick="submitLog()">Submit</button>
-                </div>
-                <br>
-              </form>
-             
-            </div>
-            <!-- <div class="col-lg-6">
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Employee Mail:</h4>
-              <div id="listBox"></div>
-              <p class="text-white">Somone stole the janitors food out of the fridge. This is the 3rd time this week. I know we can't afford new security cameras but please stop! -Garret</p>
-            </div>
-          </div> -->
-        </section>
-        <!-- Employee Time Form -->
-      </div>
+        </div>
     </section>
+    <!-- End Employee Status View -->
     
+    <!-- Start Employee Time Functions -->
+    <section class="mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
+            <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+            <div class="box p-3">
+                <br>
+                <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
+                  <div style="text-align: center;">
+                    <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#LogTimeButton">Clock In/Out</button>
+                  </div>
+                  <br>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Employee Time Functions -->
+
+    <!-- Start Admin Employee View Form -->  
+    <section class="mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
+            <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+            <div class="box p-3">
+                <br>
+                <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
+                <div id="clock"></div>
+                  <form style="padding-left: 100px; padding-right: 100px;">
+                    
+                  <div class="form-outline form-white mb-4">
+                    <label for="start-time">Start Time</label>
+                    <input type="datetime-local"  required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="start-time" class="form-control form-control-lg"/>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="end-time">End Time</label>
+                    <input  type="datetime-local" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="end-time" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="description">Description</label>
+                    <input type="text" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="description" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <!-- <input class="yuh" type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" /> -->
+
+                  </div>
+                  <div style="text-align: center;">
+                    <button  id="button" type="submit" class="btn text-white fw-bold" onclick="submitLog()">Submit</button>
+                  </div>
+                  <br>
+                </form>
+        </div>
+    <!-- End Admin Employee View Form -->  
+ 
+
+
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.3.0.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.js"></script>
+  <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+
+  <script src="./scripts/dataTables.altEditor.free.js"></script>
+  <script src="./scripts/admin.js"></script>
+
+  <!-- https://code.jquery.com/jquery-3.5.1.js
+https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js
+https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js
+https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js
+https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js
+https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js -->
   </body>
 </html>
