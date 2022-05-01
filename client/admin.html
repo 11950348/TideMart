@@ -49,116 +49,94 @@
   </head>
 
   <body>
-    <section id="wrapper">
-      <nav class="navbar navbar-expand-md">
-        <div class="container-fluid mx-2">
-          <!-- User Info -->
-          <div class="navbar-header">
-            <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
-            <p class="text-white">Caleb Ray</p>
-          </div>
-          <!-- User Info -->
-          <div class="collapse navbar-collapse" id="toggle-navbar">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Settings
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="#">Dark Mode</a>
-                  </li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Log out</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- Employee Stats -->
-        <section class="statis mt-4 text-center">
-          <div class="row">
+    
+    <!-- Start Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+        
+            <div id="userPhoto">
+                <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
+                <p class="text-white">Caleb Ray</p>
+            </div>
+
+        <!-- <a href="#" class="nav-link h3 text-white my-2">Side Nav</a> -->
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">Home</span>
+        </li>
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">About</span>
+        </li>
+        <li href="#" class="nav-link">
+            <span class="mx-2 text-white">Contact</span>
+        </li>
+        </ul>
+    </div>
+    <!-- End Side-Nav -->
+    
+    <!-- Start Employee Status View -->
+    <section class="statis mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>12</h3>
                 <p class="lead">Actively Working</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>24</h3>
                 <p class="lead">Away From Work</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>7</h3>
                 <p class="lead">Late Employees</p>
-              </div>
+            </div>
             </div>
             <div class="col-md-6 col-lg-3">
-              <div class="box p-3">
+            <div class="box p-3">
                 <h3>2</h3>
                 <p class="lead">Your Days Late</p>
-              </div>
             </div>
-          </div>
-        </section>
-        <!-- Employee Stats -->
-        
-        <section class="mt-4" id="page">
-          <div class="row">
-            <div class="col-lg-6">
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Actions:</h4>
-                <div style="text-align: center;">
-                  <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#LogTimeButton">Log Time</button>
-                  <button  id="button" type="button" class="btn text-white fw-bold">Generate Report</button>
-                </div>
-                <br>
             </div>
-            <div class="col-lg-6">
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
-                <div style="text-align: center;">
-                  <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#">Clock In/Out</button>
-                </div>
+        </div>
+    </section>
+    <!-- End Employee Status View -->
+    
+    <!-- Start Admin Time Functions -->
+    <section class="mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
+            <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+            <div class="box p-3">
                 <br>
+                <h4 class="text-white mb-4" style="text-align: center;">Actions:</h4>
+                    <div style="text-align: center;">
+                    <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#LogTimeButton">Log Time</button>
+                    <button  id="button" type="button" class="btn text-white fw-bold">Generate Report</button>
+                    </div>
+                    <br>
             </div>
-          </section>
-            <!-- <div class="col-lg-8">
-              <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Employee's:</h4>
-                <form style="padding-left: 100px; padding-right: 100px;">
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div style="text-align: center;">
-                  <button  id="button" type="submit" class="btn text-white">Submit</button>
-                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+            <div class="box p-3">
                 <br>
-              </form>
-            </div> -->
-        </section>
+                <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
+                    <div style="text-align: center;">
+                    <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#">Clock In/Out</button>
+                    </div>
+                    <br>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Admin Time Functions -->
 
-        <section class="mt-4" id="page">
-          <div class="row">
-            <div class="col-lg-12">
+    <!-- Start Admin Employee View Form -->  
+    <section class="mt-4 text-center">
+        <div class="row" style="padding-left: 200px; padding-right: 20px;">
+            <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+            <div class="box p-3">
               <br>
               <h4 class="text-white mb-4" style="text-align: center;">Employee's:</h4>
                 <form style="padding-left: 100px; padding-right: 100px;">
@@ -171,83 +149,71 @@
                       id="example"
                     ></table>
                   </div>
-                <!-- <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Table Place Holder" id="" class="form-control form-control-lg" />
-                </div>
-                <div style="text-align: center;">
-                  <button  id="button" type="submit" class="btn text-white">Submit</button>
-                </div> -->
                 <br>
               </form>
             </div>
-        </section>
+            </div>
+            </div>
+        </div>
+    <!-- End Admin Employee View Form -->  
 
-    <!-- Log Time Modal -->
-    <div class="modal" id="LogTimeButton">
-      <div class="modal-dialog">
-        <div class="modal-content h3">
-          <div class="modal-header">
-            <h2 type="button" data-dismiss="modal" class="modal-title close"><i style="size: 30px; color: white;" class="bi bi-x"></i></h2>
-          </div>
-            <div class="modal-body" style="text-align: center; color: white;">
-              <div class="row">
-                <div class="col-lg-12">
-                  <!-- <div id="clock"></div> -->
+  <!-- Log Time Modal -->
+  <div class="modal" id="LogTimeButton">
+    <div class="modal-dialog">
+      <div class="modal-content h3">
+        <div class="modal-header">
+          <h2 type="button" data-dismiss="modal" class="modal-title close"><i style="size: 30px; color: white;" class="bi bi-x"></i></h2>
+        </div>
+          <div class="modal-body" style="text-align: center; color: white;">
+            <div class="row">
+              <div class="col-lg-12">
+                <!-- <div id="clock"></div> -->
+                <br>
+                <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
+                <div id="clock"></div>
+                  <form style="padding-left: 100px; padding-right: 100px;">
+                  <div class="form-outline form-white mb-4">
+                    <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="" class="form-control form-control-lg"/>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" />
+                  </div>
+                  <div style="text-align: center;">
+                    <button  id="button" type="submit" class="btn text-white">Submit</button>
+                  </div>
                   <br>
-                  <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
-                  <div id="clock"></div>
-                    <form style="padding-left: 100px; padding-right: 100px;">
-                    <div class="form-outline form-white mb-4">
-                      <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="" class="form-control form-control-lg"/>
-                    </div>
-                    <div class="form-outline form-white mb-4">
-                      <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="" class="form-control form-control-lg" />
-                    </div>
-                    <div class="form-outline form-white mb-4">
-                      <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="" class="form-control form-control-lg" />
-                    </div>
-                    <div class="form-outline form-white mb-4">
-                      <input type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" />
-                    </div>
-                    <div style="text-align: center;">
-                      <button  id="button" type="submit" class="btn text-white">Submit</button>
-                    </div>
-                    <br>
-                  </form>
-              </div>
+                </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Log Time Modal -->  
+  </div>
+  <!-- Log Time Modal -->  
 
 
 
-    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.3.0.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.3.0.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.js"></script>
+  <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 
-    <script src="./scripts/dataTables.altEditor.free.js"></script>
-    <script src="./scripts/admin.js"></script>
+  <script src="./scripts/dataTables.altEditor.free.js"></script>
+  <script src="./scripts/admin.js"></script>
 
-    <!-- https://code.jquery.com/jquery-3.5.1.js
+  <!-- https://code.jquery.com/jquery-3.5.1.js
 https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js
 https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js
 https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js
@@ -255,6 +221,5 @@ https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js
 https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js
 https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js
 https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js -->
-    
   </body>
 </html>
