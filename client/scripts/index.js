@@ -16,11 +16,25 @@ function onSignIn() {
     }).then(function(json) {
         userList = json;
         json.forEach((user) => {
-            console.log(user);
+            //console.log(user);
             //console.log(user);
             if(user.username == searchID && user.password == searchPass) {
                 myUser = user;
-                console.log(myUser);
+                //sessionStorage.setLocalStorage('User', JSON.stringify(user));
+                // var json = JSON.stringify(user);
+                // localStorage.setItem(username, json);
+                sessionStorage.setItem('user', JSON.stringify(user.userID));
+
+                // var id = JSON.parse(sessionStorage.user);
+
+                // console.log(id);
+
+
+                // var user = localStorage.getItem(username);
+                // var data = JSON.parse(user);
+
+                //console.log(user);
+                //console.log(myUser);
                 window.location.replace('../client/employee.html');
             }
         });

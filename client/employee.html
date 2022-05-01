@@ -41,7 +41,7 @@
 
     <title>Tide Market: Employee Panel</title>
   </head>
-  <body id="main">
+  <body id="main" onload="getUser()">
     <section id="wrapper">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid mx-2">
@@ -138,13 +138,13 @@
                   
                 <div class="form-outline form-white mb-4">
                   <label for="start-time">Start Time</label>
-                  <input class="yuh" size="1" type="time" min="07:00" max="18:00" width="10%" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="start-time" class="form-control form-control-lg"/>
+                  <input class="yuh" size="1" type="datetime-local" min="07:00" max="18:00" width="10%" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="start-time" class="form-control form-control-lg"/>
                 </div>
                 <div class="form-outline form-white mb-4">
-                  <input class="yuh" size="1" type="time" min="07:00" max="18:00" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="" class="form-control form-control-lg" />
+                  <input class="yuh" size="1" type="datetime-local" min="07:00" max="18:00" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="end-time" class="form-control form-control-lg" />
                 </div>
                 <div class="form-outline form-white mb-4">
-                  <input class="yuh" type="text" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="" class="form-control form-control-lg" />
+                  <input class="yuh" type="text" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="description" class="form-control form-control-lg" />
                 </div>
                 <div class="form-outline form-white mb-4">
                   <!-- <input class="yuh" type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" /> -->
@@ -162,7 +162,7 @@
 
                 </div>
                 <div style="text-align: center;">
-                  <button  id="button" type="submit" class="btn text-white fw-bold">Submit</button>
+                  <button  id="button" type="submit" class="btn text-white fw-bold" onclick="submitLog()">Submit</button>
                 </div>
                 <br>
               </form>
