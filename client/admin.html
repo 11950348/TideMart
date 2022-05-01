@@ -61,14 +61,17 @@
 
         <!-- <a href="#" class="nav-link h3 text-white my-2">Side Nav</a> -->
         <li href="#" class="nav-link">
-            <span class="mx-2 text-white">Home</span>
+            <span class="mx-2 text-white">Map</span>
         </li>
         <li href="#" class="nav-link">
-            <span class="mx-2 text-white">About</span>
+            <span class="mx-2 text-white">Log Time</span>
         </li>
         <li href="#" class="nav-link">
-            <span class="mx-2 text-white">Contact</span>
+            <span class="mx-2 text-white">Employee Table</span>
         </li>
+        <li href="#" class="nav-link">
+          <span class="mx-2 text-white">Time Table</span>
+      </li>
         </ul>
     </div>
     <!-- End Side-Nav -->
@@ -104,21 +107,11 @@
     </section>
     <!-- End Employee Status View -->
     
+    
     <!-- Start Admin Time Functions -->
     <section class="mt-4 text-center">
         <div class="row" style="padding-left: 200px; padding-right: 20px;">
-            <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
-            <div class="box p-3">
-                <br>
-                <h4 class="text-white mb-4" style="text-align: center;">Actions:</h4>
-                    <div style="text-align: center;">
-                    <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#LogTimeButton">Log Time</button>
-                    <button  id="button" type="button" class="btn text-white fw-bold">Generate Report</button>
-                    </div>
-                    <br>
-            </div>
-            </div>
-            <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+            <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
             <div class="box p-3">
                 <br>
                 <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
@@ -132,13 +125,65 @@
     </section>
     <!-- End Admin Time Functions -->
 
+     <!-- Start Admin Map -->
+     <section class="mt-4 text-center">
+      <div class="row" style="padding-left: 200px; padding-right: 20px;">
+          <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+          <div class="box p-3">
+            <br>
+            <h4 class="text-white mb-4" style="text-align: center;">Map:</h4>  
+
+
+          </div>
+          </div>
+      </div>
+  </section>
+  <!-- End Admin Map -->
+
+      <!-- Start Admin Log Time Functions -->
+        <section class="mt-4 text-center">
+          <div class="row" style="padding-left: 200px; padding-right: 20px;">
+              <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+              <div class="box p-3">
+                <br>
+                <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
+                <div id="clock"></div>
+                  <form style="padding-left: 100px; padding-right: 100px;">
+                    
+                  <div class="form-outline form-white mb-4">
+                    <label for="start-time">Start Time</label>
+                    <input type="datetime-local"  required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Start Time" id="start-time" class="form-control form-control-lg"/>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="end-time">End Time</label>
+                    <input  type="datetime-local" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="End Time" id="end-time" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="description">Description</label>
+                    <input type="text" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Description" id="description" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <!-- <input class="yuh" type="" required="required" style="background-color: rgba(0, 0, 0, 0.3); border-color: white;" placeholder="Task" id="" class="form-control form-control-lg" /> -->
+
+                  </div>
+                  <div style="text-align: center;">
+                    <button  id="button" type="submit" class="btn text-white fw-bold" onclick="submitLog()">Submit</button>
+                  </div>
+                  <br>
+                </form>
+              </div>
+              </div>
+          </div>
+      </section>
+      <!-- End Admin Log Time Functions -->
+
     <!-- Start Admin Employee View Form -->  
     <section class="mt-4 text-center">
         <div class="row" style="padding-left: 200px; padding-right: 20px;">
             <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
             <div class="box p-3">
               <br>
-              <h4 class="text-white mb-4" style="text-align: center;">Employee's:</h4>
+              <h4 class="text-white mb-4" style="text-align: center;">Employee Table:</h4>
                 <form style="padding-left: 100px; padding-right: 100px;">
                   <div class="container">
                     <table
@@ -148,14 +193,6 @@
                       class="dataTable table table-striped"
                       id="example"
                     ></table>
-                    <br>
-                    <table
-                      cellpadding="0"
-                      cellspacing="0"
-                      border="0"
-                      class="dataTable table table-striped"
-                      id="example2"
-                    ></table>
                   </div>
                 <br>
               </form>
@@ -163,7 +200,34 @@
             </div>
             </div>
         </div>
+      </section>
     <!-- End Admin Employee View Form -->  
+
+     <!-- Start Admin Employee View Form -->  
+     <section class="mt-4 text-center">
+      <div class="row" style="padding-left: 200px; padding-right: 20px;">
+          <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+          <div class="box p-3">
+            <br>
+            <h4 class="text-white mb-4" style="text-align: center;">Time Table:</h4>
+              <form style="padding-left: 100px; padding-right: 100px;">
+                <div class="container">
+                  <table
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    class="dataTable table table-striped"
+                    id="example2"
+                  ></table>
+                </div>
+              <br>
+            </form>
+          </div>
+          </div>
+          </div>
+      </div>
+    </section>
+  <!-- End Admin Employee View Form -->  
 
   <!-- Log Time Modal -->
   <div class="modal" id="LogTimeButton">
