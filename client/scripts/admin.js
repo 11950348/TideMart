@@ -466,3 +466,96 @@ $(document).ready(function() {
 });
 
 
+// Clock In and Out button LOCAL Storage
+$('#ClockInAndOut').toggleClass(localStorage.toggled);
+//var buttonstate=0;
+function ClockInOut(element)
+{
+  //buttonstate= 1 - buttonstate;
+  var blabel, bcolor;
+  if(localStorage.toggled != 'In')
+  {
+    //If they are clocked in it is green
+    blabel="Clocked In";
+    bcolor="green";
+    $('#ClockInAndOut').toggleClass('In', true);
+    localStorage.toggled = "In";
+  }
+  else
+  {
+    //If they are clocked out it is red
+    blabel="Clocked Out";
+    bcolor="red";
+    $('#ClockInAndOut').toggleClass('In', false);
+    localStorage.toggled = "";
+  }
+  var child=element.firstChild;
+  child.style.color=bcolor;
+  child.innerHTML=blabel;
+}
+
+// // Dark Mode LOCAL Storage
+// $('#main').toggleClass(localStorage.toggled);
+
+// function darkLight() {
+//   /*DARK CLASS*/
+//   if (localStorage.toggled != 'dark') {
+//     $('#main, p').toggleClass('dark', true);
+//     localStorage.toggled = "dark";
+     
+//   } else {
+//     $('#main, p').toggleClass('dark', false);
+//     localStorage.toggled = "";
+//   }
+// }
+
+// /*Add 'checked' property to input if background == dark*/
+// if ($('main').hasClass('dark')) {
+//    $( '#checkBox' ).prop( "checked", true )
+// } else {
+//   $( '#checkBox' ).prop( "checked", false )
+// }
+
+
+
+// Dark Mode SESSION Storage
+$('#body, #sidebar').toggleClass(sessionStorage.toggled);
+
+function darkLight() {
+  /*DARK CLASS*/
+  if (sessionStorage.toggled != 'dark') {
+    $('#body, #sidebar, p').toggleClass('dark', true);
+    sessionStorage.toggled = "dark";
+     
+  } else {
+    $('#body, #sidebar, p').toggleClass('dark', false);
+    sessionStorage.toggled = "";
+  }
+}
+
+/*Add 'checked' property to input if background == dark*/
+if ($('#body').hasClass('dark')) {
+   $( '#checkBox' ).prop( "checked", true )
+} else {
+  $( '#checkBox' ).prop( "checked", false )
+}
+
+
+const sections = document.querySelectorAll("section");
+const navLi = document.querySelectorAll("nav .container ul li");
+window.onscroll = () => {
+  var current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 60) {
+      current = section.getAttribute("id"); }
+  });
+
+  navLi.forEach((li) => {
+    li.classList.remove("active");
+    if (li.classList.contains(current)) {
+      li.classList.add("active");
+    }
+  });
+};

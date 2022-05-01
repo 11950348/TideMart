@@ -48,21 +48,22 @@
     <title>Tide Market: Admin Panel</title>
   </head>
 
-  <body onload="handleOnLoad()">
+  <body onload="handleOnLoad()" id="body">
     
     <!-- Start Side-Nav -->
     <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
         <ul class="nav flex-column text-white w-100">
         
-            <div id="userPhoto">
-                <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
-                <p class="text-white">Caleb Ray</p>
-            </div>
+            <!-- <div id="userPhoto">
+                <img class="rounded-pill img-fluid" width="65" src="https://www.zohowebstatic.com/sites/default/files/u1549/artboard-1.png" alt="">
+                <p class="text-white">Admin</p>
+            </div> -->
 
         <!-- <a href="#" class="nav-link h3 text-white my-2">Side Nav</a> -->
-        <li href="#" class="nav-link">
+        <!-- <li href="#" class="nav-link">
             <span class="mx-2 text-white">Map</span>
-        </li>
+        </li> -->
+        <br>
         <li href="#" class="nav-link">
             <span class="mx-2 text-white">Log Time</span>
         </li>
@@ -72,12 +73,26 @@
         <li href="#" class="nav-link">
           <span class="mx-2 text-white">Time Table</span>
       </li>
+      <li href="#" class="nav-link">
+        <div class="dropdown">
+          <a class="btn text-white fw-bold dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <p style="color: #0082ca;">Dark Mode: </p>
+            <label class="switch">
+              <input type="checkbox" onclick="darkLight(this)" id="checkBox">
+              <span class="slider"></span>
+            </label>
+          </ul>
+        </div>
+    </li>
         </ul>
     </div>
     <!-- End Side-Nav -->
     
     <!-- Start Employee Status View -->
-    <section class="statis mt-4 text-center">
+    <!-- <section class="statis mt-4 text-center">
         <div class="row" style="padding-left: 200px; padding-right: 20px;">
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
             <div class="box p-3">
@@ -104,36 +119,18 @@
             </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Employee Status View -->
-    
-    
-    <!-- Start Admin Time Functions -->
-    <section class="mt-4 text-center">
-        <div class="row" style="padding-left: 200px; padding-right: 20px;">
-            <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
-            <div class="box p-3">
-                <br>
-                <h4 class="text-white mb-4" style="text-align: center;">Clock In & Out:</h4>
-                    <div style="text-align: center;">
-                    <button id="button" type="button" class="btn text-white fw-bold" data-toggle="modal" data-target="#">Clock In/Out</button>
-                    </div>
-                    <br>
-            </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Admin Time Functions -->
 
      <!-- Start Admin Map -->
      <section class="mt-4 text-center">
       <div class="row" style="padding-left: 200px; padding-right: 20px;">
           <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
           <div class="box p-3">
-            <br>
-            <h4 class="text-white mb-4" style="text-align: center;">Map:</h4>  
+            <!-- <br> -->
+            <!-- <h4 class="text-white mb-4" style="text-align: center;">Map:</h4>   -->
             <div class="row">
-              <div class="col-md-12">Our Google Map Will go here</div>
+              <!-- <div class="col-md-12">Admin: Employee Log Map</div> -->
               <div id="map"></div>
             </div>
 
@@ -143,14 +140,32 @@
   </section>
   <!-- End Admin Map -->
 
+  <!-- Start Admin Time Functions -->
+  <section class="mt-4 text-center">
+    <div class="row" style="padding-left: 200px; padding-right: 20px;">
+        <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
+        <div class="box p-3">
+            <br>
+            <div id="clock"></div>
+            <div id="ClockInAndOut">  
+              <div style="text-align: center;">
+                    <button id="button" type="button" class="btn btn-large text-white fw-bold" onclick="ClockInOut(this)"><div>Clock In/Out</div></button>
+              </div>
+              </div> 
+        </div>
+        </div>
+    </div>
+</section>
+<!-- End Admin Time Functions -->
+
       <!-- Start Admin Log Time Functions -->
-        <section class="mt-4 text-center">
+      
+        <section class="mt-4 text-center" id="LogTime">
           <div class="row" style="padding-left: 200px; padding-right: 20px;">
               <div class="col-md-12 col-lg-12 mb-4 mb-lg-0">
               <div class="box p-3">
                 <br>
                 <h4 class="text-white mb-4" style="text-align: center;">Log Time:</h4>
-                <div id="clock"></div>
                   <form style="padding-left: 100px; padding-right: 100px;">
                     
                   <div class="form-outline form-white mb-4">
@@ -178,7 +193,7 @@
               </div>
           </div>
       </section>
-      <!-- End Admin Log Time Functions -->
+    <!-- End Admin Log Time Functions -->
 
     <!-- Start Admin Employee View Form -->  
     <section class="mt-4 text-center">
