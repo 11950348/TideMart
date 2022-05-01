@@ -94,3 +94,24 @@ if ($("main").hasClass("dark")) {
 } else {
   $("#checkBox").prop("checked", false);
 }
+
+
+var buttonstate=0;
+function ClockInOut(element)
+{
+  buttonstate= 1 - buttonstate;
+  var blabel, bcolor;
+  if(buttonstate)
+  {
+    blabel="Clocked In";
+    bcolor="green";
+  }
+  else
+  {
+    blabel="Clocked Out";
+    bcolor="red";
+  }
+  var child=element.firstChild;
+  child.style.color=bcolor;
+  child.innerHTML=blabel;
+}
