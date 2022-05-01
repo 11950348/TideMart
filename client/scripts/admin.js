@@ -20,7 +20,7 @@ function putUser(rowdata) {
     Password: rowdata.password, //document.getElementById("title").value,
     //SSN: rowdata.ssn, //document.getElementById("title").value,
     FirstName: rowdata.firstName, //document.getElementById("title").value,
-    MiddleName: 'rowdata.middleName', //document.getElementById("title").value,
+    MiddleName: "rowdata.middleName", //document.getElementById("title").value,
     LastName: rowdata.lastName, //document.getElementById("title").value,
     Email: rowdata.email, //document.getElementById("title").value,
     StartDate: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
@@ -37,10 +37,10 @@ function putUser(rowdata) {
   fetch(baseUrl, {
     method: "PUT",
     headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-        body: JSON.stringify(sendUser),
+    body: JSON.stringify(sendUser),
   }).then((response) => {
     //mySong = sendSong;
     // populateList();
@@ -54,7 +54,7 @@ function postUser(rowdata) {
     Password: rowdata.password, //document.getElementById("title").value,
     SSN: rowdata.ssn, //document.getElementById("title").value,
     FirstName: rowdata.firstName, //document.getElementById("title").value,
-    MiddleName: 'rowdata.middleName', //document.getElementById("title").value,
+    MiddleName: "rowdata.middleName", //document.getElementById("title").value,
     LastName: rowdata.lastName, //document.getElementById("title").value,
     Email: rowdata.email, //document.getElementById("title").value,
     StartDate: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
@@ -188,8 +188,24 @@ $(document).ready(function () {
         name: "refresh", // do not change name
       },
       {
+        extend: "copy",
+        text: "copy",
+        name: "copy",
+      },
+      {
+        extend: "csv",
+        text: "csv",
+        name: "csv",
+      },
+      {
+        extend: "excel",
         text: "excel",
         name: "excel",
+      },
+      {
+        extend: "pdf",
+        text: "pdf",
+        name: "pdf",
       },
     ],
     onAddRow: function (datatable, rowdata, success, error) {
@@ -228,3 +244,108 @@ $(document).ready(function () {
     },
   });
 });
+
+$(document).ready(function() {
+
+  var columnDefs = [
+      {
+      data: "timesheetID",
+      title: "ID",
+      type: "readonly"
+      },
+      {
+      data: "startTime",
+      title: "Start Time"
+      },
+      {
+      data: "endTime",
+      title: "End Time"
+      },
+      {
+      data: "description",
+      title: "Description"
+      },
+      {
+      data: "userID",
+      title: "UserID."
+      },
+  ];
+
+  var myTable;
+
+  var url_ws_mock_get = './mock_svc_load.json';
+  var url_ws_mock_ok = './mock_svc_ok.json';
+  if (location.href.startsWith("file://")) {
+      // local URL's are not allowed
+      url_ws_mock_get = 'https://localhost:6969/api/timesheet';
+      url_ws_mock_ok = 'https://luca-vercelli.github.io/DataTable-AltEditor/example/03_ajax_objects/mock_svc_ok.json';
+  }
+
+  myTable = $('#example2').DataTable({
+      "sPaginationType": "full_numbers",
+      ajax: {
+          url : url_ws_mock_get,
+          // our data is an array of objects, in the root node instead of /data node, so we need 'dataSrc' parameter
+          dataSrc : ''
+      },
+      columns: columnDefs,
+      dom: 'Bfrtip',        // Needs button container
+      select: 'single',
+      responsive: true,
+      altEditor: true,     // Enable altEditor
+      buttons: [
+          {
+              text: 'Add',
+              name: 'add'        // do not change name
+          },
+          {
+              extend: 'selected', // Bind to Selected row
+              text: 'Edit',
+              name: 'edit'        // do not change name
+          },
+          {
+              extend: 'selected', // Bind to Selected row
+              text: 'Delete',
+              name: 'delete'      // do not change name
+          },
+          {
+              text: 'Refresh',
+              name: 'refresh'      // do not change name
+          }
+      ],
+      onAddRow: function(datatable, rowdata, success, error) {
+          $.ajax({
+              // a tipycal url would be / with type='PUT'
+              url: url_ws_mock_ok,
+              type: 'GET',
+              data: rowdata,
+              success: success,
+              error: error
+          });
+      },
+      onDeleteRow: function(datatable, rowdata, success, error) {
+          $.ajax({
+              // a tipycal url would be /{id} with type='DELETE'
+              url: url_ws_mock_ok,
+              type: 'GET',
+              data: rowdata,
+              success: success,
+              error: error
+          });
+      },
+      onEditRow: function(datatable, rowdata, success, error) {
+          $.ajax({
+              // a tipycal url would be /{id} with type='POST'
+              url: url_ws_mock_ok,
+              type: 'GET',
+              data: rowdata,
+              success: success,
+              error: error
+          });
+      }
+  });
+
+
+});
+
+

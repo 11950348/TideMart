@@ -6,7 +6,7 @@ const baseUrl = "https://localhost:6969/api/timesheet";
 //   if (localStorage.toggled != 'dark') {
 //     $('#main, p').toggleClass('dark', true);
 //     localStorage.toggled = "dark";
-     
+
 //   } else {
 //     $('#main, p').toggleClass('dark', false);
 //     localStorage.toggled = "light";
@@ -20,22 +20,20 @@ const baseUrl = "https://localhost:6969/api/timesheet";
 //   $( '#checkBox' ).prop( "checked", false )
 // }
 
-$('#main').toggleClass(localStorage.toggled);
+$("#main").toggleClass(localStorage.toggled);
 
 function darkLight() {
   /*DARK CLASS*/
-  if (localStorage.toggled != 'dark') {
-    $('#main, p').toggleClass('dark', true);
+  if (localStorage.toggled != "dark") {
+    $("#main, p").toggleClass("dark", true);
     localStorage.toggled = "dark";
-     
   } else {
-    $('#main, p').toggleClass('dark', false);
+    $("#main, p").toggleClass("dark", false);
     localStorage.toggled = "";
   }
 }
 
 // function getUser() {
-
 
 //   const allUsersApiUrl = baseUrl;
 //   fetch(allUsersApiUrl).then(function(response) {
@@ -48,7 +46,7 @@ function darkLight() {
 //           if(user.username == searchID && user.password == searchPass) {
 //           }
 //       });
-      
+
 //   }).catch(function(error) {
 //       console.log(error);
 //   });
@@ -64,9 +62,9 @@ function submitLog() {
     EndTime: document.getElementById("end-time").value,
     Description: document.getElementById("description").value,
     Lunch: "true",
-    UserID: id
-  }
-  console.log(sendLog)
+    UserID: id,
+  };
+  console.log(sendLog);
 
   fetch(postTimeSheetApiUrl, {
     method: "POST",
@@ -85,13 +83,12 @@ function submitLog() {
 function butthole() {
   var id = JSON.parse(sessionStorage.user);
 
-                console.log(id);
+  console.log(id);
 }
 
 /*Add 'checked' property to input if background == dark*/
-if ($('main').hasClass('dark')) {
-   $( '#checkBox' ).prop( "checked", true )
+if ($("main").hasClass("dark")) {
+  $("#checkBox").prop("checked", true);
 } else {
-  $( '#checkBox' ).prop( "checked", false )
+  $("#checkBox").prop("checked", false);
 }
-
