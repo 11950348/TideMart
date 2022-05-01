@@ -13,6 +13,41 @@ function deleteFunction(id) {
   });
 }
 
+function putUser(rowdata) {
+  id = rowdata.userID;
+  const sendUser = {
+    UserID: rowdata.userID,
+    Password: rowdata.password, //document.getElementById("title").value,
+    //SSN: rowdata.ssn, //document.getElementById("title").value,
+    FirstName: rowdata.firstName, //document.getElementById("title").value,
+    MiddleName: 'rowdata.middleName', //document.getElementById("title").value,
+    LastName: rowdata.lastName, //document.getElementById("title").value,
+    Email: rowdata.email, //document.getElementById("title").value,
+    StartDate: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Salary: rowdata.salary, //document.getElementById("title").value,
+    ShiftStart: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Birthday: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Phone: rowdata.phone, //document.getElementById("title").value,
+    URL: rowdata.url, //document.getElementById("title").value,
+    Admin: rowdata.admin, //document.getElementById("title").value,
+    Username: rowdata.username, //document.getElementById("title").value,
+    DepartmentID: rowdata.departmentID, //document.getElementById("title").value,
+  };
+
+  fetch(baseUrl, {
+    method: "PUT",
+    headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify(sendUser),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
 function postUser(rowdata) {
   const postUserApiUrl = baseUrl;
   const sendUser = {
@@ -93,6 +128,7 @@ $(document).ready(function () {
     {
       data: "startDate",
       title: "Start date",
+      type: "datetime-local",
     },
     {
       data: "birthday",
@@ -101,6 +137,10 @@ $(document).ready(function () {
     {
       data: "password",
       title: "Password",
+    },
+    {
+      data: "ssn",
+      title: "SSN",
     },
   ];
 
@@ -176,6 +216,7 @@ $(document).ready(function () {
       });
     },
     onEditRow: function (datatable, rowdata, success, error) {
+      putUser(rowdata);
       $.ajax({
         // a tipycal url would be /{id} with type='POST'
         url: url_ws_mock_ok,
