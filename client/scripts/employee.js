@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:6969/api/timesheet";
+const baseUrl2 = "https://localhost:6969/api/timesheet";
 // $('#main').toggleClass(localStorage.toggled);
 
 // function darkLight() {
@@ -53,9 +53,11 @@ function darkLight() {
 // }
 
 function submitLog() {
-  const postTimeSheetApiUrl = baseUrl;
+  const postTimeSheetApiUrl = baseUrl2;
 
   var id = JSON.parse(sessionStorage.user);
+
+  console.log(id);
 
   const sendLog = {
     StartTime: document.getElementById("start-time").value,
