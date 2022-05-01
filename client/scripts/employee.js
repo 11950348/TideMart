@@ -82,11 +82,11 @@ function submitLog() {
   });
 }
 
-function butthole() {
-  var id = JSON.parse(sessionStorage.user);
+// function butthole() {
+//   var id = JSON.parse(sessionStorage.user);
 
-  console.log(id);
-}
+//   console.log(id);
+// }
 
 /*Add 'checked' property to input if background == dark*/
 if ($("main").hasClass("dark")) {

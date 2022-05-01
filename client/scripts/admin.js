@@ -14,6 +14,44 @@ function deleteFunction(id) {
   });
 }
 
+function addTheShit(imSoFuckongTiredPleaseLetMeSleep) {
+  var postLogApiUrl = baseUrl3;
+
+  const sendLog = {
+    StartTime: imSoFuckongTiredPleaseLetMeSleep.startTime,
+    EndTime: imSoFuckongTiredPleaseLetMeSleep.endTime,
+    Description: imSoFuckongTiredPleaseLetMeSleep.description,
+    Lunch: "true",
+    UserID: imSoFuckongTiredPleaseLetMeSleep.userID,
+  };
+
+  fetch(postLogApiUrl, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendLog),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
+function deleteFunction2(id) {
+  const deleteUserApiUrl2 = baseUrl3 + "/" + id;
+  fetch(deleteUserApiUrl2, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((response) => {
+    //populateList();
+  });
+}
+
 function submitLog2() {
   const postTimeSheetApiUrl2 = baseUrl3;
 
@@ -72,6 +110,31 @@ function putUser(rowdata) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(sendUser),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
+function putLog(rowdata) {
+  var id = JSON.parse(sessionStorage.user);
+
+  const sendOtherUser = {
+    StartTime: rowdata.startTime,
+    EndTime: rowdata.endTime,
+    Description: rowdata.description,
+    Lunch: "true",
+    UserID: rowdata.userID,
+  };
+
+  fetch(baseUrl3, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendOtherUser),
   }).then((response) => {
     //mySong = sendSong;
     // populateList();
@@ -341,10 +404,31 @@ $(document).ready(function() {
           },
           {
               text: 'Refresh',
-              name: 'refresh'      // do not change name
-          }
+              name: 'refresh' ,     // do not change name
+          },
+          {
+            extend: "copy",
+            text: "copy",
+            name: "copy",
+          },
+          {
+            extend: "csv",
+            text: "csv",
+            name: "csv",
+          },
+          {
+            extend: "excel",
+            text: "excel",
+            name: "excel",
+          },
+          {
+            extend: "pdf",
+            text: "pdf",
+            name: "pdf",
+          },
       ],
       onAddRow: function(datatable, rowdata, success, error) {
+        addTheShit(rowdata);
           $.ajax({
               // a tipycal url would be / with type='PUT'
               url: url_ws_mock_ok,
@@ -355,6 +439,7 @@ $(document).ready(function() {
           });
       },
       onDeleteRow: function(datatable, rowdata, success, error) {
+        deleteFunction2(rowdata[0].timesheetID);
           $.ajax({
               // a tipycal url would be /{id} with type='DELETE'
               url: url_ws_mock_ok,
@@ -365,6 +450,7 @@ $(document).ready(function() {
           });
       },
       onEditRow: function(datatable, rowdata, success, error) {
+        putLog(rowdata);
           $.ajax({
               // a tipycal url would be /{id} with type='POST'
               url: url_ws_mock_ok,
