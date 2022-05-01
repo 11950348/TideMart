@@ -235,3 +235,12 @@ main {
     border-radius: 50%;
   }
 /* Dark Mode Stuff */
+
+th{
+  color: white;
+}
+
+.nav{
+  background-color: #2196f3;
+  color: white;
+}
