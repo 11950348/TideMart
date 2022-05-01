@@ -38,6 +38,23 @@ namespace api.Controllers
         [HttpPost]
         public void Post([FromBody] User user)
         {
+            // User newUser = new User() { 
+            //     Password = user.Password,
+            //     SSN = user.SSN,
+            //     FirstName = user.FirstName,
+            //     MiddleName = user.MiddleName,
+            //     LastName = user.LastName,
+            //     Email = user.Email,
+            //     StartDate = DateTime.Now,
+            //     Salary = user.Salary,
+            //     ShiftStart = DateTime.Now,
+            //     Birthday = DateTime.Now,
+            //     Phone = user.Phone,
+            //     URL = user.URL,
+            //     Admin = user.Admin,
+            //     Username = user.Username,
+            //     DepartmentID = user.DepartmentID,
+            // };
             handlerOfData.Insert(user);
         }
 

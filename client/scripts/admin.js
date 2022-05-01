@@ -13,36 +13,94 @@ function deleteFunction(id) {
   });
 }
 
+function postUser(rowdata) {
+  const postUserApiUrl = baseUrl;
+  const sendUser = {
+    Password: rowdata.password, //document.getElementById("title").value,
+    SSN: rowdata.ssn, //document.getElementById("title").value,
+    FirstName: rowdata.firstName, //document.getElementById("title").value,
+    MiddleName: 'rowdata.middleName', //document.getElementById("title").value,
+    LastName: rowdata.lastName, //document.getElementById("title").value,
+    Email: rowdata.email, //document.getElementById("title").value,
+    StartDate: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Salary: rowdata.salary, //document.getElementById("title").value,
+    ShiftStart: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Birthday: "2022-04-30T23:58:19.861Z", //document.getElementById("title").value,
+    Phone: rowdata.phone, //document.getElementById("title").value,
+    URL: rowdata.url, //document.getElementById("title").value,
+    Admin: rowdata.admin, //document.getElementById("title").value,
+    Username: rowdata.username, //document.getElementById("title").value,
+    DepartmentID: rowdata.departmentID, //document.getElementById("title").value,
+  };
+  console.log(sendUser);
+  fetch(postUserApiUrl, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendUser),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
 $(document).ready(function () {
   var columnDefs = [
     {
       data: "userID",
-      title: "ID #",
+      title: "ID",
       type: "readonly",
     },
     {
       data: "firstName",
-      title: "First Name",
+      title: "First",
     },
     {
       data: "lastName",
-      title: "Last Name",
+      title: "Last",
     },
     {
       data: "username",
       title: "Username",
     },
     {
+      data: "departmentID",
+      title: "Dept",
+    },
+    {
+      data: "email",
+      title: "Email Address",
+    },
+    {
       data: "phone",
       title: "Phone #",
+    },
+    {
+      data: "salary",
+      title: "Salary",
+    },
+    {
+      data: "admin",
+      title: "Admin",
+    },
+    {
+      data: "url",
+      title: "Url",
     },
     {
       data: "startDate",
       title: "Start date",
     },
     {
-      data: "salary",
-      title: "Salary",
+      data: "birthday",
+      title: "Birthday",
+    },
+    {
+      data: "password",
+      title: "Password",
     },
   ];
 
@@ -91,10 +149,12 @@ $(document).ready(function () {
       },
       {
         text: "excel",
-        name: "excel"
-      }
+        name: "excel",
+      },
     ],
     onAddRow: function (datatable, rowdata, success, error) {
+      //console.log(rowdata)
+      postUser(rowdata);
       $.ajax({
         // a tipycal url would be / with type='PUT'
         url: url_ws_mock_get,
