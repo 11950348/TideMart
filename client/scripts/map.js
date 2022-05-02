@@ -33,6 +33,34 @@ function initMap(json) {
     title: "University of Alabama",
   });
 
+  const uOfB = { lat: 34.214, lng: -87.5391 };
+  const marker2 = new google.maps.Marker({
+    position: uOfB,
+    map: map,
+    title: "University of BAlabama",
+  });
+
+  const uOfC = { lat: 73.824, lng: -88.5391 };
+  const marker3 = new google.maps.Marker({
+    position: uOfC,
+    map: map,
+    title: "University of CAlabama",
+  });
+
+  const uOfD = { lat: 36.514, lng: -86.5391 };
+  const marker4 = new google.maps.Marker({
+    position: uOfD,
+    map: map,
+    title: "University of DAlabama",
+  });
+
+  const uOfE = { lat: 27.314, lng: -87.5391 };
+  const marker5 = new google.maps.Marker({
+    position: uOfE,
+    map: map,
+    title: "University of EAlabama",
+  });
+
   //put marker for each person
   json.forEach((person) => {
     var address = { lat: person.lat, lng: person.lng };
