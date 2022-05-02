@@ -88,33 +88,28 @@ function butthole() {
   console.log(id);
 }
 
-
 // Clock In and Out button LOCAL Storage
-$('#ClockInAndOut').toggleClass(localStorage.toggled);
+$("#ClockInAndOut").toggleClass(localStorage.toggled);
 //var buttonstate=0;
-function ClockInOut(element)
-{
+function ClockInOut(element) {
   //buttonstate= 1 - buttonstate;
   var blabel, bcolor;
-  if(localStorage.toggled != 'In')
-  {
+  if (localStorage.toggled != "In") {
     //If they are clocked in it is green
-    blabel="Clocked In";
-    bcolor="green";
-    $('#ClockInAndOut').toggleClass('In', true);
+    blabel = "Clocked In";
+    bcolor = "green";
+    $("#ClockInAndOut").toggleClass("In", true);
     localStorage.toggled = "In";
-  }
-  else
-  {
+  } else {
     //If they are clocked out it is red
-    blabel="Clocked Out";
-    bcolor="red";
-    $('#ClockInAndOut').toggleClass('In', false);
+    blabel = "Clocked Out";
+    bcolor = "red";
+    $("#ClockInAndOut").toggleClass("In", false);
     localStorage.toggled = "";
   }
-  var child=element.firstChild;
-  child.style.color=bcolor;
-  child.innerHTML=blabel;
+  var child = element.firstChild;
+  child.style.color = bcolor;
+  child.innerHTML = blabel;
 }
 
 // // Dark Mode LOCAL Storage
@@ -125,7 +120,7 @@ function ClockInOut(element)
 //   if (localStorage.toggled != 'dark') {
 //     $('#main, p').toggleClass('dark', true);
 //     localStorage.toggled = "dark";
-     
+
 //   } else {
 //     $('#main, p').toggleClass('dark', false);
 //     localStorage.toggled = "";
@@ -139,26 +134,23 @@ function ClockInOut(element)
 //   $( '#checkBox' ).prop( "checked", false )
 // }
 
-
-
 // Dark Mode SESSION Storage
-$('#body').toggleClass(sessionStorage.toggled);
+$("#body").toggleClass(sessionStorage.toggled);
 
 function darkLight() {
   /*DARK CLASS*/
-  if (sessionStorage.toggled != 'dark') {
-    $('#body, p').toggleClass('dark', true);
+  if (sessionStorage.toggled != "dark") {
+    $("#body, p").toggleClass("dark", true);
     sessionStorage.toggled = "dark";
-     
   } else {
-    $('#body, p').toggleClass('dark', false);
+    $("#body, p").toggleClass("dark", false);
     sessionStorage.toggled = "";
   }
 }
 
 /*Add 'checked' property to input if background == dark*/
-if ($('#body').hasClass('dark')) {
-   $( '#checkBox' ).prop( "checked", true )
+if ($("#body").hasClass("dark")) {
+  $("#checkBox").prop("checked", true);
 } else {
-  $( '#checkBox' ).prop( "checked", false )
+  $("#checkBox").prop("checked", false);
 }

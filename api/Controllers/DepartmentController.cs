@@ -43,7 +43,7 @@ namespace api.Controllers
 
         // PUT: api/Department/5
         [EnableCors("OpenPolicy")]
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Department department)
         {
             handlerOfData.Update(department);

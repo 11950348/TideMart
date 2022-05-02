@@ -42,7 +42,7 @@ namespace api.Controllers
 
         // PUT: api/Timesheet/5
         [EnableCors("OpenPolicy")]
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Timesheet timesheet)
         {
             handlerOfData.Update(timesheet);

@@ -38,8 +38,7 @@ function onSignIn() {
           //console.log(myUser);
           if (user.admin == "true") {
             window.location.replace("../client/admin.html");
-          }
-          else {
+          } else {
             window.location.replace("../client/employee.html");
           }
         }

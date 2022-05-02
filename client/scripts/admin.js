@@ -14,15 +14,15 @@ function deleteFunction(id) {
   });
 }
 
-function addTheShit(imSoFuckongTiredPleaseLetMeSleep) {
+function addLog(variable) {
   var postLogApiUrl = baseUrl3;
 
   const sendLog = {
-    StartTime: imSoFuckongTiredPleaseLetMeSleep.startTime,
-    EndTime: imSoFuckongTiredPleaseLetMeSleep.endTime,
-    Description: imSoFuckongTiredPleaseLetMeSleep.description,
+    StartTime: variable.startTime,
+    EndTime: variable.endTime,
+    Description: variable.description,
     Lunch: "true",
-    UserID: imSoFuckongTiredPleaseLetMeSleep.userID,
+    UserID: variable.userID,
   };
 
   fetch(postLogApiUrl, {
@@ -82,6 +82,62 @@ function submitLog2() {
   });
 }
 
+function putDepartment(rowdata) {
+  baseUrl55 = 'https://localhost:6969/api/Department';
+  id = rowdata.userID;
+  const sendUser = {
+    DepartmentName: rowdata.departmentName, //document.getElementById("title").value,
+  };
+
+  fetch(baseUrl55, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendUser),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
+function deleteDepartment(id) {
+  const deleteDepartmentApiUrl2 = 'https://localhost:6969/api/Department' + "/" + id;
+  fetch(deleteDepartmentApiUrl2, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((response) => {
+    //populateList();
+  });
+}
+
+function updateDepartment(rowdata) {
+  const baseUrl56 = 'https://localhost:6969/api/Department';
+  id = rowdata.userID;
+  const sendUser = {
+    DepartmentID: rowdata.departmentID,
+    DepartmentName: rowdata.departmentName,
+  };
+
+  fetch(baseUrl56, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sendUser),
+  }).then((response) => {
+    //mySong = sendSong;
+    // populateList();
+    // blankFields();
+  });
+}
+
 function putUser(rowdata) {
   id = rowdata.userID;
   const sendUser = {
@@ -118,9 +174,11 @@ function putUser(rowdata) {
 }
 
 function putLog(rowdata) {
-  var id = JSON.parse(sessionStorage.user);
+  //var id = JSON.parse(sessionStorage.user);
+  const baseUrl35 = 'https://localhost:6969/api/Timesheet';
 
   const sendOtherUser = {
+    TimesheetID: rowdata.timesheetID,
     StartTime: rowdata.startTime,
     EndTime: rowdata.endTime,
     Description: rowdata.description,
@@ -128,7 +186,7 @@ function putLog(rowdata) {
     UserID: rowdata.userID,
   };
 
-  fetch(baseUrl3, {
+  fetch(baseUrl35, {
     method: "PUT",
     headers: {
       Accept: "application/json",
@@ -339,29 +397,228 @@ $(document).ready(function () {
   });
 });
 
+$(document).ready(function () {
+  var columnDefs = [
+    {
+      data: "timesheetID",
+      title: "ID",
+      type: "readonly",
+    },
+    {
+      data: "startTime",
+      title: "Start Time",
+    },
+    {
+      data: "endTime",
+      title: "End Time",
+    },
+    {
+      data: "description",
+      title: "Description",
+    },
+    {
+      data: "userID",
+      title: "UserID.",
+    },
+  ];
+
+  var myTable;
+
+  var url_ws_mock_get = "./mock_svc_load.json";
+  var url_ws_mock_ok = "./mock_svc_ok.json";
+  if (location.href.startsWith("file://")) {
+    // local URL's are not allowed
+    url_ws_mock_get = "https://localhost:6969/api/timesheet";
+    url_ws_mock_ok =
+      "https://luca-vercelli.github.io/DataTable-AltEditor/example/03_ajax_objects/mock_svc_ok.json";
+  }
+
+  myTable = $("#example2").DataTable({
+    sPaginationType: "full_numbers",
+    ajax: {
+      url: url_ws_mock_get,
+      // our data is an array of objects, in the root node instead of /data node, so we need 'dataSrc' parameter
+      dataSrc: "",
+    },
+    columns: columnDefs,
+    dom: "Bfrtip", // Needs button container
+    select: "single",
+    responsive: true,
+    altEditor: true, // Enable altEditor
+    buttons: [
+      {
+        text: "Add",
+        name: "add", // do not change name
+      },
+      {
+        extend: "selected", // Bind to Selected row
+        text: "Edit",
+        name: "edit", // do not change name
+      },
+      {
+        extend: "selected", // Bind to Selected row
+        text: "Delete",
+        name: "delete", // do not change name
+      },
+      {
+        text: "Refresh",
+        name: "refresh", // do not change name
+      },
+      {
+        extend: "copy",
+        text: "copy",
+        name: "copy",
+      },
+      {
+        extend: "csv",
+        text: "csv",
+        name: "csv",
+      },
+      {
+        extend: "excel",
+        text: "excel",
+        name: "excel",
+      },
+      {
+        extend: "pdf",
+        text: "pdf",
+        name: "pdf",
+      },
+    ],
+    onAddRow: function (datatable, rowdata, success, error) {
+      addTheShit(rowdata);
+      $.ajax({
+        // a tipycal url would be / with type='PUT'
+        url: url_ws_mock_ok,
+        type: "GET",
+        data: rowdata,
+        success: success,
+        error: error,
+      });
+    },
+    onDeleteRow: function (datatable, rowdata, success, error) {
+      deleteFunction2(rowdata[0].timesheetID);
+      $.ajax({
+        // a tipycal url would be /{id} with type='DELETE'
+        url: url_ws_mock_ok,
+        type: "GET",
+        data: rowdata,
+        success: success,
+        error: error,
+      });
+    },
+    onEditRow: function (datatable, rowdata, success, error) {
+      putLog(rowdata);
+      $.ajax({
+        // a tipycal url would be /{id} with type='POST'
+        url: url_ws_mock_ok,
+        type: "GET",
+        data: rowdata,
+        success: success,
+        error: error,
+      });
+    },
+  });
+});
+
+// Clock In and Out button LOCAL Storage
+$("#ClockInAndOut").toggleClass(localStorage.toggled);
+//var buttonstate=0;
+function ClockInOut(element) {
+  //buttonstate= 1 - buttonstate;
+  var blabel, bcolor;
+  if (localStorage.toggled != "In") {
+    //If they are clocked in it is green
+    blabel = "Clocked In";
+    bcolor = "green";
+    $("#ClockInAndOut").toggleClass("In", true);
+    localStorage.toggled = "In";
+  } else {
+    //If they are clocked out it is red
+    blabel = "Clocked Out";
+    bcolor = "red";
+    $("#ClockInAndOut").toggleClass("In", false);
+    localStorage.toggled = "";
+  }
+  var child = element.firstChild;
+  child.style.color = bcolor;
+  child.innerHTML = blabel;
+}
+
+// // Dark Mode LOCAL Storage
+// $('#main').toggleClass(localStorage.toggled);
+
+// function darkLight() {
+//   /*DARK CLASS*/
+//   if (localStorage.toggled != 'dark') {
+//     $('#main, p').toggleClass('dark', true);
+//     localStorage.toggled = "dark";
+
+//   } else {
+//     $('#main, p').toggleClass('dark', false);
+//     localStorage.toggled = "";
+//   }
+// }
+
+// /*Add 'checked' property to input if background == dark*/
+// if ($('main').hasClass('dark')) {
+//    $( '#checkBox' ).prop( "checked", true )
+// } else {
+//   $( '#checkBox' ).prop( "checked", false )
+// }
+
+// Dark Mode SESSION Storage
+$("#body, #sidebar").toggleClass(sessionStorage.toggled);
+
+function darkLight() {
+  /*DARK CLASS*/
+  if (sessionStorage.toggled != "dark") {
+    $("#body, #sidebar, p").toggleClass("dark", true);
+    sessionStorage.toggled = "dark";
+  } else {
+    $("#body, #sidebar, p").toggleClass("dark", false);
+    sessionStorage.toggled = "";
+  }
+}
+
+/*Add 'checked' property to input if background == dark*/
+if ($("#body").hasClass("dark")) {
+  $("#checkBox").prop("checked", true);
+} else {
+  $("#checkBox").prop("checked", false);
+}
+
+const sections = document.querySelectorAll("section");
+const navLi = document.querySelectorAll("nav .container ul li");
+window.onscroll = () => {
+  var current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 60) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLi.forEach((li) => {
+    li.classList.remove("active");
+    if (li.classList.contains(current)) {
+      li.classList.add("active");
+    }
+  });
+};
+
 $(document).ready(function() {
 
   var columnDefs = [
       {
-      data: "timesheetID",
-      title: "ID",
+      data: "departmentID",
+      title: "Dept ID",
       type: "readonly"
       },
       {
-      data: "startTime",
-      title: "Start Time"
-      },
-      {
-      data: "endTime",
-      title: "End Time"
-      },
-      {
-      data: "description",
-      title: "Description"
-      },
-      {
-      data: "userID",
-      title: "UserID."
+      data: "departmentName",
+      title: "Name"
       },
   ];
 
@@ -371,11 +628,11 @@ $(document).ready(function() {
   var url_ws_mock_ok = './mock_svc_ok.json';
   if (location.href.startsWith("file://")) {
       // local URL's are not allowed
-      url_ws_mock_get = 'https://localhost:6969/api/timesheet';
+      url_ws_mock_get = 'https://localhost:6969/api/Department';
       url_ws_mock_ok = 'https://luca-vercelli.github.io/DataTable-AltEditor/example/03_ajax_objects/mock_svc_ok.json';
   }
 
-  myTable = $('#example2').DataTable({
+  myTable = $('#example3').DataTable({
       "sPaginationType": "full_numbers",
       ajax: {
           url : url_ws_mock_get,
@@ -404,7 +661,7 @@ $(document).ready(function() {
           },
           {
               text: 'Refresh',
-              name: 'refresh' ,     // do not change name
+              name: 'refresh'      // do not change name
           },
           {
             extend: "copy",
@@ -428,7 +685,7 @@ $(document).ready(function() {
           },
       ],
       onAddRow: function(datatable, rowdata, success, error) {
-        addTheShit(rowdata);
+        putDepartment(rowdata);
           $.ajax({
               // a tipycal url would be / with type='PUT'
               url: url_ws_mock_ok,
@@ -439,7 +696,7 @@ $(document).ready(function() {
           });
       },
       onDeleteRow: function(datatable, rowdata, success, error) {
-        deleteFunction2(rowdata[0].timesheetID);
+        deleteDepartment(rowdata[0].departmentID);
           $.ajax({
               // a tipycal url would be /{id} with type='DELETE'
               url: url_ws_mock_ok,
@@ -450,7 +707,7 @@ $(document).ready(function() {
           });
       },
       onEditRow: function(datatable, rowdata, success, error) {
-        putLog(rowdata);
+        updateDepartment(rowdata);
           $.ajax({
               // a tipycal url would be /{id} with type='POST'
               url: url_ws_mock_ok,
@@ -465,97 +722,3 @@ $(document).ready(function() {
 
 });
 
-
-// Clock In and Out button LOCAL Storage
-$('#ClockInAndOut').toggleClass(localStorage.toggled);
-//var buttonstate=0;
-function ClockInOut(element)
-{
-  //buttonstate= 1 - buttonstate;
-  var blabel, bcolor;
-  if(localStorage.toggled != 'In')
-  {
-    //If they are clocked in it is green
-    blabel="Clocked In";
-    bcolor="green";
-    $('#ClockInAndOut').toggleClass('In', true);
-    localStorage.toggled = "In";
-  }
-  else
-  {
-    //If they are clocked out it is red
-    blabel="Clocked Out";
-    bcolor="red";
-    $('#ClockInAndOut').toggleClass('In', false);
-    localStorage.toggled = "";
-  }
-  var child=element.firstChild;
-  child.style.color=bcolor;
-  child.innerHTML=blabel;
-}
-
-// // Dark Mode LOCAL Storage
-// $('#main').toggleClass(localStorage.toggled);
-
-// function darkLight() {
-//   /*DARK CLASS*/
-//   if (localStorage.toggled != 'dark') {
-//     $('#main, p').toggleClass('dark', true);
-//     localStorage.toggled = "dark";
-     
-//   } else {
-//     $('#main, p').toggleClass('dark', false);
-//     localStorage.toggled = "";
-//   }
-// }
-
-// /*Add 'checked' property to input if background == dark*/
-// if ($('main').hasClass('dark')) {
-//    $( '#checkBox' ).prop( "checked", true )
-// } else {
-//   $( '#checkBox' ).prop( "checked", false )
-// }
-
-
-
-// Dark Mode SESSION Storage
-$('#body, #sidebar').toggleClass(sessionStorage.toggled);
-
-function darkLight() {
-  /*DARK CLASS*/
-  if (sessionStorage.toggled != 'dark') {
-    $('#body, #sidebar, p').toggleClass('dark', true);
-    sessionStorage.toggled = "dark";
-     
-  } else {
-    $('#body, #sidebar, p').toggleClass('dark', false);
-    sessionStorage.toggled = "";
-  }
-}
-
-/*Add 'checked' property to input if background == dark*/
-if ($('#body').hasClass('dark')) {
-   $( '#checkBox' ).prop( "checked", true )
-} else {
-  $( '#checkBox' ).prop( "checked", false )
-}
-
-
-const sections = document.querySelectorAll("section");
-const navLi = document.querySelectorAll("nav .container ul li");
-window.onscroll = () => {
-  var current = "";
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    if (pageYOffset >= sectionTop - 60) {
-      current = section.getAttribute("id"); }
-  });
-
-  navLi.forEach((li) => {
-    li.classList.remove("active");
-    if (li.classList.contains(current)) {
-      li.classList.add("active");
-    }
-  });
-};
