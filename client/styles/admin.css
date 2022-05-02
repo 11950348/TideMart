@@ -240,7 +240,7 @@ th{
   color: white;
 }
 
-.nav{
-  background-color: #2196f3;
+#navBar{
   color: white;
+  background-color: rgba(57, 85, 135, 0.5);
 }
